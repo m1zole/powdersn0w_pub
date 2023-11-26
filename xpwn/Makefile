@@ -1,8 +1,8 @@
 #ICC		= xcrun -sdk iphoneos clang
-MCC		= clang
-MCC_FLAGS	= -I./include -Os -Wall
+MCC		= xcrun -sdk macosx clang
+MCC_FLAGS	= -I./include -I/opt/local/include -Os -Wall
 
-LIBS		= */*.a -lz -lpng -lbz2 -lcrypto
+LIBS		= */*.a -L/opt/local/lib -lz -lpng -lbz2 -lcrypto -lc
 
 .PHONY: all test asr iboot kernel common dmg hdutil hfs minizip ipsw-patch build validate ticket daibutsu
 
@@ -100,6 +100,9 @@ clean:
 	-$(RM) hfs/*.a hfs/*.o
 	-$(RM) minizip/*.a minizip/*.o
 	-$(RM) ipsw-patch/*.a ipsw-patch/*.o
+	-$(RM) asr/*.a asr/*.o
+	-$(RM) iboot/*.a iboot/*.o
+	-$(RM) kernel/*.a kernel/*.o
 	-$(RM) ipsw
 	-$(RM) tools/kernel_patcher
 	-$(RM) tools/iboot_patcher
