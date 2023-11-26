@@ -1,5 +1,5 @@
 #ICC		= xcrun -sdk iphoneos clang
-MCC		= clang
+MCC		= xcrun -sdk macosx clang
 MCC_FLAGS	= -I../include -Os -Wall
 
 .PHONY: all

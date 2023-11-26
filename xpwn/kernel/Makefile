@@ -1,12 +1,12 @@
 #ICC		= xcrun -sdk iphoneos clang
-MCC		= clang
-MCC_FLAGS	= -I../include -Os -Wall  -DHAVE_CRYPT -I../lib/openssl/include
+MCC		= xcrun -sdk macosx clang
+MCC_FLAGS	= -I../include -I/opt/local/include -Os -Wall  -DHAVE_CRYPT 
 
 .PHONY: all
 
 all:
 	$(MCC) $(MCC_FLAGS) -c *.c
-	ar rcs kernel.a *.o
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar rcs kernel.a *.o
 	-$(RM) *.o
 
 
